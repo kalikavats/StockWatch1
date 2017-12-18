@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    
+  <h:head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+  <h:outputStylesheet library="css" name="bootstrap.min1.css"> </h:outputStylesheet>
+  <style>
+   .error{color:red}
+  </style>
+  </h:head> 
+  <h:body>
+  <br></br>
+  <br></br>
+  <br></br>
+  <div class="container">
+      <div class="navbar navbar-inverse" >
+        <div class="navbar-brand">
+         Manager Main Page
+        </div>
+      </div>
+  </div> 
+           <h:form>
+				<div class="pull-right">
+				<h:commandLink value="Logout" actionListener="#{login.logout()}" action="#{login.logout()}"/>
+				</div>
+				</h:form>
+  
+  <div class="cols">
+			<div class="row-xs-12">
+			
+
+			
+  <h:form styleClass="form-horizontal">
+				    <h:commandLink value="1. Profile" actionListener="#{login.getManagerDetails()}" action="#{login.getManagerDetails()}"/>
+					<br></br> 
+					<h:commandLink value="2. Requests From Clients to Purchase and Sell" actionListener="SellPurchaseForCustomer.xhtml" action="SellPurchaseForCustomer.xhtml"/>
+					<br></br>
+					<h:commandLink value="3. StockWatch" actionListener="StockWatch.xhtml" action="StockWatch.xhtml"/>
+					<br></br>
+					<h:commandLink value="4. Account" actionListener="AccountManager.xhtml" action="AccountManager.xhtml"/>
+					
+					
+					
+				</h:form>
+				
+  </div>
+  </div>
+  
+  </h:body>
+</html>   

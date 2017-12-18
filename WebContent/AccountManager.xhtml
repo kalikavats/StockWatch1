@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    
+  <h:head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+  <h:outputStylesheet library="css" name="bootstrap.min1.css"> </h:outputStylesheet>
+  <style>
+   .error{color:red}
+  </style>
+  </h:head> 
+  <h:body>
+  <div class="container">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-brand">Account Balance and History</div>
+        </div>
+      <h:form>
+				<div class="pull-right">
+				<h:commandLink value="Logout" actionListener="#{login.logout()}" action="#{login.logout()}"/>
+				</div>
+				</h:form>
+				
+				<h:form>
+				<div class="pull-left">
+				<h:commandLink value="Back" actionListener="#{login.getResults()}" action="#{login.getResults()}"/>
+				</div>
+				</h:form>
+
+<h:dataTable id="dt1" value="#{stockSee.selectInfoAll1}" var="item" bgcolor="#F1F1F1" border="10" cellpadding="8" cellspacing="5"  width="100%" dir="LTR" frame="hsides" rules="all" summary="This is a JSF code to create dataTable." >
+
+<f:facet name="header">
+<h:outputText value="Account History og Manager" />
+</f:facet> 
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Username" />
+</f:facet> 
+<h:outputText style="" value="#{item.username}" ></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Symbol of stock"/>
+</f:facet> 
+<h:outputText value="#{item.stockSymbol}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Quantity"/>
+</f:facet> 
+<h:outputText value="#{item.qty}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Price of Stock"/>
+</f:facet> 
+<h:outputText value="#{item.price}"></h:outputText>
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Total Amount"/>
+</f:facet> 
+<h:outputText value="#{item.amount}"></h:outputText>
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Fees"/>
+</f:facet> 
+<h:outputText value="#{item.fees}"></h:outputText>
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Username Of Client"/>
+</f:facet> 
+<h:outputText value="#{item.usernameOfClient}"></h:outputText>
+</h:column>
+
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Action By User"/>
+</f:facet> 
+<h:outputText value="#{item.actionByUser}"></h:outputText>
+</h:column>
+
+
+<f:facet name="footer">
+<h:outputText value="The End" />
+</f:facet> 
+
+</h:dataTable>
+
+
+ <h:form id="accountBalance" styleClass="form-horizontal">
+                   
+                    <div class="form-group">
+                        <h:outputLabel value="Final Account Balance" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                        #{stockSee.calculateBalanceofManager()} 
+                        </div>
+
+                    </div>
+
+                </h:form>
+<h:messages  styleClass="error"/>
+        
+    </div>   
+
+<!-- Code Update Profile -->
+
+</h:body>
+</html>   

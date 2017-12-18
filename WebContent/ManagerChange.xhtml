@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    
+  <h:head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+  <h:outputStylesheet library="css" name="bootstrap.min1.css"> </h:outputStylesheet>
+  <style>
+   .error{color:red}
+  </style>
+  </h:head> 
+ <h:body>
+ 
+ <div class="container">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-brand">Update Profile</div>
+        </div>
+          <h:form>
+				<div class="pull-right">
+				<h:commandLink value="Logout" actionListener="#{login.logout()}" action="#{login.logout()}"/>
+				</div>
+				</h:form>
+				
+				<h:form>
+				<div class="pull-left">
+				<h:commandLink value="Back" actionListener="#{login.getResults()}" action="#{login.getResults()}"/>
+				</div>
+		</h:form>
+		
+        <div class="row">
+            <div class="col-xs-12 col-xs-updated">
+            <b> * Edit User name cannot be updated ,its only for verification purposes</b>
+                <h:form id="Register" styleClass="form-horizontal">
+                  <div class="form-group">
+
+                        <h:outputLabel value="Last Name" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                         <h:inputText a:placeholder="Change Last Name" value="#{register.lastName}" label="Last name" required="false" id="last_name1" requiredMessage="Last Name Required"/>
+                         <h:messages  for="last_name" styleClass="error"/>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <h:outputLabel value="Address" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                        <h:inputText a:placeholder="Chnage Address"  value="#{register.address}" label="address" required="false" id="address1" requiredMessage="Address Required"/>
+                        <h:messages  for="address" styleClass="error"/>
+                    </div>
+
+                    </div>
+
+					<div class="form-group">
+                        <h:outputLabel value="Phone Number" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                        <h:inputText a:placeholder="Change Phone Number" value="#{register.phoneNumber}" label="phone number" required="false" id="phone1" requiredMessage="Phone number mandatory" validatorMessage="Number not valid,number should be 10 digits">
+                        <f:validateRegex pattern="^(^[0-9]{10}$)" />
+                        </h:inputText>
+                        <h:messages  for="phone" styleClass="error"/>
+                    </div>
+
+                    </div>
+					
+					<div class="form-group">
+                        <h:outputLabel value="Fees" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                        <h:inputText a:placeholder="Fees" value="#{register.fees}"   label="fees"   required="false" id="fees" requiredMessage="fees field cannot be null"/>
+                        <h:messages  for="fees" styleClass="error"/>
+                    </div>
+					</div>
+					
+					
+					<div class="form-group">
+                        <h:outputLabel value="Username" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                        <h:inputText a:placeholder="Username" value="#{register.username}"   label="username"   required="true" id="username1" requiredMessage="Please enter your existing username "/>
+                        <h:messages  for="username" styleClass="error"/>
+                    </div>
+					</div>
+					
+					<div class="form-group">
+                        <h:outputLabel value="Password" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                        <h:inputSecret a:placeholder="Change Password" value="#{register.password}"   label="password"   required="false" id="password1" requiredMessage="Please enter password" validatorMessage="Please create a password with atleast one capital letter, one number and a pattern(@,#,$,%)">
+                        <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})"/></h:inputSecret>
+                        <h:messages  for="password" styleClass="error"/>
+                    </div>
+					</div>
+					
+					
+                    <div class="form-group">
+                     <div class="col-sm-offset-2 col-sm-10">
+                     <h:commandButton value="Submit" styleClass="bta btnlg btn-primary" action="#{register.updateManagerDetails()}" />
+                     </div>
+                     </div>
+                 <h:messages styleClass="error"/>
+                </h:form>
+               <h:messages  styleClass="error"/>
+            </div>
+                   
+
+
+        </div>
+    </div>
+
+
+
+</h:body>
+</html>   

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    
+  <h:head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+  <h:outputStylesheet library="css" name="bootstrap.min1.css"> </h:outputStylesheet>
+  <style>
+   .error{color:red}
+  </style>
+  </h:head> 
+  <h:body>
+  <div class="container">
+  <h:form>
+				
+        <div class="navbar navbar-inverse">
+            <div class="navbar-brand">Managers to Select From</div>
+        </div>
+      <div class="pull-right">
+				<h:commandLink value="Logout" actionListener="#{login.logout()}" action="#{login.logout()}"/>
+				</div>
+				</h:form>
+				
+				<h:form>
+				<div class="pull-left">
+				<h:commandLink value="Back" actionListener="#{login.getResults()}" action="#{login.getResults()}"/>
+				</div>
+				</h:form>
+
+<h:dataTable id="dt1" value="#{managerSee.mperInfoAll}" var="item" bgcolor="#F1F1F1" border="10" cellpadding="8" cellspacing="5"  width="100%" dir="LTR" frame="hsides" rules="all" summary="This is a JSF code to create dataTable." >
+
+<f:facet name="header">
+<h:outputText value="Select Managers from below" />
+</f:facet> 
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="First Name" />
+</f:facet> 
+<h:outputText style="" value="#{item.firstName}" ></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Last Name"/>
+</f:facet> 
+<h:outputText value="#{item.lastName}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Username"/>
+</f:facet> 
+<h:outputText value="#{item.username}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="fees"/>
+</f:facet> 
+<h:outputText value="#{item.fees}"></h:outputText>
+</h:column>
+
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Action to View Profile"/>
+</f:facet> 
+<h:form>
+<h:commandLink action="#{registerManager.viewProfileManager(item.username)}" value="View">
+   
+</h:commandLink></h:form>
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Action to Select"/>
+</f:facet> 
+<h:form>
+<h:commandLink action="#{registerManager.selectManager(item.username)}" value="Select">
+   
+</h:commandLink></h:form>
+</h:column>
+
+<f:facet name="footer">
+<h:outputText value="The End" />
+</f:facet> 
+
+</h:dataTable>
+
+<h:dataTable id="dt2" value="#{managerSee.minInfo}" var="item" bgcolor="#F1F1F1" border="10" cellpadding="8" cellspacing="5"  width="100%" dir="LTR" frame="hsides" rules="all" summary="This is a JSF code to create dataTable." >
+
+<f:facet name="header">
+<h:outputText value="Manager Selected" />
+</f:facet> 
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="First Name" />
+</f:facet> 
+<h:outputText style="" value="#{item.firstName}" ></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Last Name"/>
+</f:facet> 
+<h:outputText value="#{item.lastName}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Username"/>
+</f:facet> 
+<h:outputText value="#{item.username}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="fees"/>
+</f:facet> 
+<h:outputText value="#{item.fees}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Action to View Profile"/>
+</f:facet> 
+<h:form>
+<h:commandLink action="#{registerManager.viewProfileManager(item.username)}" value="View">
+   
+</h:commandLink></h:form>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Action to Delete Manager"/>
+</f:facet> 
+<h:form>
+<h:commandLink action="#{registerManager.deleteSelectedManager(item.username)}" value="Delete">
+   
+</h:commandLink></h:form>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Request Manager"/>
+</f:facet> 
+<h:form>
+<h:commandLink action="#{requestManager.RequestManagerok(item.username)}" value="Request">
+   
+</h:commandLink></h:form>
+</h:column>
+
+<f:facet name="footer">
+<h:outputText value="The End" />
+</f:facet> 
+
+</h:dataTable>
+
+<h:messages  styleClass="error"/>
+        
+    </div>   
+
+<!-- Code Update Profile -->
+
+</h:body>
+</html>   

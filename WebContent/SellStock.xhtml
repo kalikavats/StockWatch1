@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    
+  <h:head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+  <h:outputStylesheet library="css" name="bootstrap.min1.css"> </h:outputStylesheet>
+  <style>
+   .error{color:red}
+  </style>
+  </h:head> 
+  <h:body>
+  <div class="container">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-brand">Purchased Stock and Sell Stock</div>
+        </div>
+      <h:form>
+				<div class="pull-right">
+				<h:commandLink value="Logout" actionListener="#{login.logout()}" action="#{login.logout()}"/>
+				</div>
+				</h:form>
+				
+				<h:form>
+				<div class="pull-left">
+				<h:commandLink value="Back" actionListener="#{login.getResults()}" action="#{login.getResults()}"/>
+				</div>
+				</h:form>
+
+<h:dataTable id="dt1" value="#{stockSee.perInfoAll}" var="item" bgcolor="#F1F1F1" border="10" cellpadding="8" cellspacing="5"  width="100%" dir="LTR" frame="hsides" rules="all" summary="This is a JSF code to create dataTable." >
+
+<f:facet name="header">
+<h:outputText value="Purchased Stock" />
+</f:facet> 
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Id" />
+</f:facet> 
+<h:outputText style="" value="#{item.id}" ></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Username"/>
+</f:facet> 
+<h:outputText value="#{item.username}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="stock Symbol"/>
+</f:facet> 
+<h:outputText value="#{item.stockSymbol}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Quantity"/>
+</f:facet> 
+<h:outputText value="#{item.qty}"></h:outputText>
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Price"/>
+</f:facet> 
+<h:outputText value="#{item.price}"></h:outputText>
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Amount"/>
+</f:facet> 
+<h:outputText value="#{item.amount}"></h:outputText>
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Action to Sell"/>
+</f:facet> 
+<h:form>
+<h:commandLink action="#{stockApiBean.sellStock(item.id,item.qty,item.stockSymbol,item.username)}" value="Sell">
+   
+</h:commandLink></h:form>
+</h:column>
+
+<f:facet name="footer">
+<h:outputText value="The End" />
+</f:facet> 
+
+</h:dataTable>
+
+<h:dataTable id="dt2" value="#{stockSee.perInfoIn}" var="item1" bgcolor="#F1F1F1" border="10" cellpadding="8" cellspacing="5"  width="100%" dir="LTR" frame="hsides" rules="all" summary="This is a JSF code to create dataTable." >
+
+<f:facet name="header">
+<h:outputText value="Sold Stock" />
+</f:facet> 
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Id" />
+</f:facet> 
+<h:outputText style="" value="#{item1.id}" ></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Username"/>
+</f:facet> 
+<h:outputText value="#{item1.username}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="stock Symbol"/>
+</f:facet> 
+<h:outputText value="#{item1.stockSymbol}"></h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Quantity"/>
+</f:facet> 
+<h:outputText value="#{item1.qty}"></h:outputText>
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Price"/>
+</f:facet> 
+<h:outputText value="#{item1.price}"></h:outputText>
+</h:column>
+<h:column>
+<f:facet name="header">
+<h:outputText value="Amount"/>
+</f:facet> 
+<h:outputText value="#{item1.amount}"></h:outputText>
+</h:column>
+
+
+<f:facet name="footer">
+<h:outputText value="The End" />
+</f:facet> 
+
+</h:dataTable>
+
+<h:messages  styleClass="error"/>
+        
+    </div>   
+
+<!-- Code Update Profile -->
+
+</h:body>
+</html>   

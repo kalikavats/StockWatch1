@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    
+  <h:head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Conpatible" content="IE=edge"/>
+  <h:outputStylesheet library="css" name="bootstrap.min1.css"> </h:outputStylesheet>
+  <style>
+   .error{color:red}
+  </style>
+  </h:head> 
+  <h:body>
+    <div class="container">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-brand">Request Manager</div>
+        </div>
+        <h:form>
+				<div class="pull-right">
+				<h:commandLink value="Logout" actionListener="#{login.logout()}" action="#{login.logout()}"/>
+				</div>
+				</h:form>
+				
+				<h:form>
+				<div class="pull-left">
+				<h:commandLink value="Back" actionListener="#{login.getResults()}" action="#{login.getResults()}"/>
+				</div>
+				</h:form>
+        <div class="row">
+            <div class="col-xs-12 col-xs-updated">
+                <h:form id="Request" styleClass="form-horizontal">
+                    
+                       Fees will apply on both Transactions and automatically deducted from the account.Mention amount to sell or purchase
+                  
+					<div class="form-group">
+                        <h:outputLabel value="Money Given" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                        <h:inputText a:placeholder="money given" value="#{requestManager.moneyGiven}"   label="money"   required="true" id="money" requiredMessage="If buying please put the total amount and for selling fill managemnet fees"/>
+                        <h:messages  for="money" styleClass="error"/>
+                    </div>
+					</div>
+					
+					<div class="form-group">
+					<h:selectOneMenu value="#{requestManager.action}">
+                 	<f:selectItem itemValue="Purchase" itemLabel="Purchase" />
+   	                <f:selectItem itemValue="Sell" itemLabel="Sell" />
+                	</h:selectOneMenu>
+					</div>
+					
+                    <div class="form-group">
+                     <div class="col-sm-offset-2 col-sm-10">
+                     <h:commandButton value="Request" styleClass="bta btnlg btn-primary" action="#{requestManager.requestRedirect(requestManager.moneyGiven)}" />
+                     </div>
+                     </div>
+<h:messages  styleClass="error"/>
+                </h:form>
+</div>
+           
+
+
+        </div>
+    </div>
+
+</h:body>
+</html>   
